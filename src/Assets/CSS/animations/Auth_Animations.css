@@ -1,0 +1,39 @@
+@keyframes loginAuthImage {
+    0%{
+        left: 100%;
+        transform: translateX(-100%);
+        background-image: url('../../IMG/authImage.jpg');
+    }
+    100%{
+        left: 0px;
+        background-image: url('../../IMG/authImage2.jpg');
+    }
+}
+@keyframes registerAuthImage {
+    0%{
+        left: 0px;
+        background-image: url('../../IMG/authImage2.jpg');
+    }
+    100%{
+        left: 100%;
+        transform: translateX(-100%);
+        background-image: url('../../IMG/authImage.jpg');
+    }
+}
+@keyframes showFormError {
+    0%{
+        left: -250px;
+    }
+    100%{
+        left: 20px;
+    }
+}
+@keyframes hideFormError {
+    0%{
+        left: 20px;
+        /* left: initial; */
+    }
+    100%{
+        left: -250px;
+    }
+}

@@ -1,0 +1,26 @@
+.remember-me{
+    justify-content: flex-end;
+    text-align: right;
+    width: 80%;
+    color: #FCFCFC;
+}
+.register-link{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+.login-form{
+    width: 450px;
+    height: 450px;
+}
+.login-form-input-container{
+    width: 360px;
+}
+.login-btn{
+    width: 360px;
+}
+.login-link{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}

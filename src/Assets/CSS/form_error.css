@@ -1,0 +1,35 @@
+.form-error-message {
+  display: flex;
+  flex-direction: row;
+  max-width: 240px;
+  min-width: fit-content;
+  padding: 10px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fcfcfc;
+  position: absolute;
+  top: 20px;
+  left: -250px;
+  z-index: 9999999;
+}
+.error-icon {
+  color: #c91818;
+  font-size: 17px;
+}
+.error-text {
+  font-size: 16px;
+  color: #8f1d1d;
+  margin-left: 7px;
+}
+.show-form-error-message {
+  animation-name: showFormError;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+}
+.hide-form-error-message {
+  animation-name: hideFormError;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+}

@@ -1,0 +1,20 @@
+.register-form{
+    width: 580px;
+    height: 500px;
+}
+.register-form-input-container{
+    width: 500px;
+}
+.register-form-input-container .form-icon{
+    width: 50px;
+}
+.register-btn{
+    width: 500px;
+}
+.register-form-row{
+    width: 500px;
+}
+.register-form-row .register-form-input-container{
+    width: 48%;
+    /* margin: 0px 10px; */
+}
