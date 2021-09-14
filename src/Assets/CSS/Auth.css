@@ -1,88 +1,87 @@
-@import url('./animations/Auth_Animations.css');
-@import url('./login.css');
-@import url('./register.css');
-@import url('./small_screens/auth.css');
-@import url('./form_error.css');
-.auth-bg{
-    background: #380141;
-    min-width: 100vw;
-    min-height: 100vh;
+@import url("./animations/Auth_Animations.css");
+@import url("./login.css");
+@import url("./register.css");
+@import url("./small_screens/auth.css");
+@import url("./form_error.css");
+.auth-bg {
+  background: #380141;
+  min-width: 100vw;
+  min-height: 100vh;
 }
-.auth-container{
-    width: 100vw;
-    min-height: 100vh;
-    box-sizing: border-box;
+.auth-container {
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
-.auth-image{
-    width: 50%;
-    height: 100vh;
-    box-sizing: border-box;
-    position: absolute;
-    z-index: 99999;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+.auth-image {
+  width: 50%;
+  height: 100vh;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 99999;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
-.auth-image-login{
-    animation-name: loginAuthImage;
-    animation-duration: 0.7s;
-    animation-fill-mode: forwards;
+.auth-image-login {
+  animation-name: loginAuthImage;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
 }
-.auth-image-register{
-    animation-name: registerAuthImage;
-    animation-duration: 0.7s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
+.auth-image-register {
+  animation-name: registerAuthImage;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
-.auth-form{
-    background-color: #1C0320;
-    border-radius: 20px;
-}
-
-.form-input-container{
-    background: #FCFCFC;
-    margin: 15px 0px;
-    border-radius: 7px;
-
-}
-.form-icon{
-    background: rgba(226, 226, 226, 0.9);
-    border-radius: 10px 0px 0px 10px;
-    width: 50px;
-    font-size: 20px;
-}
-.form-input{
-    font-size: 20px;
-    font-family: 'Jost', sans-serif;
-    padding: 5px 10px;
-    box-sizing: border-box;
-    background: #FCFCFC;
-    height: 45px;
-    outline: none;
-    border: none;
-    /* width: 85%; */
-    width: -webkit-fill-available;
-    border-radius: 7px;
-    transition: 0.2s;
-}
-.form-input:hover{
-    background-color: #ffffff;
+.auth-form {
+  background-color: #1c0320;
+  border-radius: 20px;
 }
 
-.auth-link{
-    color: #FCFCFC;
-    /* text-decoration: underline; */
-    cursor: pointer;
-    font-size: 16px;
-    border-bottom: 1px solid #fcfcfc;
-    height: 20px;
-    transition: 0.12s;
+.form-input-container {
+  background: #fcfcfc;
+  margin: 15px 0px;
+  border-radius: 7px;
 }
-.auth-link:hover{
-    color: #cfcfcf;
-    border-bottom-color: #cfcfcf;
+.form-icon {
+  background: rgba(226, 226, 226, 0.9);
+  border-radius: 10px 0px 0px 10px;
+  width: 50px;
+  font-size: 20px;
 }
-::placeholder{
-    color: rgba(63, 62, 62, 0.9) !important;
-    font-size: 16px;
+.form-input {
+  font-size: 20px;
+  font-family: "Jost", sans-serif;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  background: #fcfcfc;
+  height: 45px;
+  outline: none;
+  border: none;
+  /* width: 85%; */
+  width: -webkit-fill-available;
+  border-radius: 7px;
+  transition: 0.2s;
+}
+.form-input:hover {
+  background-color: #ffffff;
+}
+
+.auth-link {
+  color: #fcfcfc;
+  /* text-decoration: underline; */
+  cursor: pointer;
+  font-size: 16px;
+  border-bottom: 1px solid #fcfcfc;
+  height: 20px;
+  transition: 0.12s;
+}
+.auth-link:hover {
+  color: #cfcfcf;
+  border-bottom-color: #cfcfcf;
+}
+::placeholder {
+  color: rgba(63, 62, 62, 0.9) !important;
+  font-size: 16px;
 }

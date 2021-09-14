@@ -1,44 +1,67 @@
-@import url('./fonts.css');
-body{
-    font-family: 'Jost', sans-serif !important;
-    background-color: #380141;
+@import url("./fonts.css");
+a {
+  text-decoration: none;
 }
-.flex-row{
-    display: flex;
-    flex-direction: row;
+body {
+  font-family: "Jost", sans-serif !important;
+  background-color: #380141;
+  margin: 0px;
 }
-.flex-col{
-    display: flex;
-    flex-direction: column;
+.flex-row {
+  display: flex;
+  flex-direction: row;
 }
-.justify-center{
-    justify-content: center;
+.flex-col {
+  display: flex;
+  flex-direction: column;
 }
-.justify-space{
-    justify-content: space-between;
+.justify-center {
+  justify-content: center;
 }
-.align-center{
-    align-items: center;
+.justify-space {
+  justify-content: space-between;
 }
-.align-stretch{
-    align-items: stretch;
+.align-center {
+  align-items: center;
 }
-.width-50{
-    width: 50%;
+.align-stretch {
+  align-items: stretch;
 }
-.purple-form-button{
-    background: #380141;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    height: 40px;
-    font-size: 18px;
-    color: #fcfcfc;
-    font-family: 'Jost', sans-serif;
-    margin: 10px 0px;
-    cursor: pointer;
-    transition: 0.2s;
+.width-50 {
+  width: 50%;
 }
-.purple-form-button:hover{
-    background: #2b0231;
+.purple-form-button {
+  background: #380141;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  height: 40px;
+  font-size: 18px;
+  color: #fcfcfc;
+  font-family: "Jost", sans-serif;
+  margin: 10px 0px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.purple-form-button:hover {
+  background: #2b0231;
+}
+.button-dark {
+  background: #1c0320;
+  transition: 0.2s;
+}
+.bg-dark {
+  background: #1c0320;
+}
+.text-dark {
+  color: #1c0320;
+}
+.button-dark:hover {
+  background: #26002c91;
+}
+.text-light {
+  color: #fcfcfc;
+}
+.bg-light {
+  background: #fcfcfc;
 }

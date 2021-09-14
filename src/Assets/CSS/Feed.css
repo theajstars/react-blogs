@@ -1,0 +1,62 @@
+@import url("./posts_feed.css");
+@import url("./small_screens/posts_feed.css");
+.feed-navbar {
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.new-post-btn,
+.search-container,
+.nav-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.new-post-btn {
+  border: none;
+  outline: none;
+  font-family: "Jost", sans-serif;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 120px;
+  font-size: 17px;
+  cursor: pointer;
+  height: 40px;
+  justify-content: center;
+}
+.search-container {
+  border-radius: 10px;
+  justify-content: space-between;
+  width: 430px;
+  position: absolute;
+  left: 50%;
+  margin-left: -215px;
+}
+.search-icon {
+  box-sizing: border-box;
+  padding: 5px;
+  width: 30px;
+  cursor: pointer;
+}
+.search-posts-input {
+  border: none;
+  outline: none;
+  font-family: "Jost", sans-serif;
+  font-size: 18.4px;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 0px 10px;
+  width: 400px;
+}
+.nav-link {
+  height: 40px;
+  width: 40px;
+  font-size: 25px;
+  justify-content: center;
+  border-radius: 50%;
+}

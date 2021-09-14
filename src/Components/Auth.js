@@ -21,9 +21,18 @@ function Auth() {
   const [errorDisplay, setErrorDisplay] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    const token = Cookies.get("ud");
+    if (token !== undefined) {
+      window.location.href = "/feed";
+    }
+  }, []);
   //   Login status state change
   useEffect(() => {
     console.log("Login status: ", loginStatus);
+    if (loginStatus) {
+      window.location.href = "/feed";
+    }
   }, [loginStatus]);
   function loginUser(e) {
     e.preventDefault();
@@ -49,8 +58,8 @@ function Auth() {
           } else {
             // User Exists
             if (res.data.auth) {
-              setLoginStatus(true);
               Cookies.set("ud", res.data.token, { expires: 4 });
+              setLoginStatus(true);
               axios
                 .get("http://localhost:8080/isUserAuth", {
                   headers: {

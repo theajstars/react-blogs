@@ -1,0 +1,28 @@
+@media screen and (max-width: 750px) {
+  div.search-container {
+    top: 90px;
+  }
+  div.posts-feed {
+    margin-top: 80px;
+  }
+}
+@media screen and (max-width: 550px) {
+  a.post {
+    width: 90vw;
+  }
+  div.search-container {
+    width: 350px;
+    margin-left: -175px;
+  }
+  input.search-posts-input {
+    width: 300px;
+  }
+  span.post-detail {
+    margin-right: 10px;
+  }
+}
+@media screen and (max-width: 400px) {
+  a.post {
+    padding: 10px 15px;
+  }
+}

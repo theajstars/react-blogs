@@ -1,0 +1,53 @@
+@keyframes showResponse {
+  0% {
+    top: -50px;
+  }
+  100% {
+    top: 20px;
+  }
+}
+
+@keyframes hideResponse {
+  0% {
+    top: 20px;
+  }
+  100% {
+    top: -50px;
+  }
+}
+.post-response {
+  width: fit-content;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  background-color: #fcfcfc;
+  margin-left: -150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  padding: 10px;
+  height: 50px;
+  box-sizing: border-box;
+  border-radius: 25px;
+}
+.show-response {
+  animation-name: showResponse;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+}
+.hide-response {
+  animation-name: hideResponse;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+}
+.post-response-icon {
+  margin-right: 6px;
+}
+.error-icon {
+  color: rgb(201, 24, 24);
+}
+.success-icon {
+  color: rgba(14, 175, 49, 0.829);
+}

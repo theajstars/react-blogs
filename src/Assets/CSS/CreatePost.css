@@ -1,0 +1,64 @@
+@import url("./post_response.css");
+.profile-icon-container {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+.post-form-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+.post-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90vw;
+  max-width: 800px;
+}
+.post-input::placeholder,
+.add-tag::placeholder {
+  font-family: Jost;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 16px;
+  color: #635a5a;
+}
+.post-input {
+  width: 100%;
+  font-size: 16px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  outline: none;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+}
+.input-error {
+  border-color: rgb(190, 49, 24);
+}
+.title-input {
+  padding: 12px 15px;
+}
+.body-input {
+  height: 300px;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+.post-form-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.add-tag {
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 15px;
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+}
