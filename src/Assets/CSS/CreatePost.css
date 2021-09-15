@@ -1,9 +1,5 @@
 @import url("./post_response.css");
-.profile-icon-container {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-}
+
 .post-form-container {
   width: 100%;
   display: flex;

@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import React, { useState, useEffect, useRef } from "react";
 import "../../Assets/CSS/CreatePost.css";
+import HomeIcon from "./HomeIcon";
 import ProfileIcon from "./ProfileIcon";
 export default function CreatePost() {
   const [token, setToken] = useState(Cookies.get("ud"));
@@ -90,6 +91,9 @@ export default function CreatePost() {
           ref={postResponseIconRef}
         ></span>
         <p className="response-text">{postResponseText}</p>
+      </div>
+      <div className="home-icon-container">
+        <HomeIcon />
       </div>
       <div className="profile-icon-container">
         <ProfileIcon />

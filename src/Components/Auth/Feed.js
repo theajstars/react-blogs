@@ -27,7 +27,11 @@ export default function Feed() {
         })
         .then((res) => {
           console.log(res);
-          setFeedPosts(res.data.posts);
+          if (!res.data.auth && res.data.auth !== undefined) {
+            Cookies.remove("ud")((window.location.href = "/auth"));
+          } else {
+            setFeedPosts(res.data.posts);
+          }
         });
     }
   }, []);
@@ -138,33 +142,6 @@ export default function Feed() {
             </Link>
           );
         })}
-        <Link to="/doof" className="post bg-light">
-          <span className="post-author">Dr Braavosi</span>
-          <span className="post-title">Chicken at it's very best</span>
-          <span className="post-body">
-            {postBody.length < 100
-              ? postBody
-              : `${postBody.substring(0, 100)}...`}
-          </span>
-          <div className="post-bottom">
-            <div className="post-details">
-              <span className="post-detail">Sep 17 2021</span>
-              <span className="post-detail">12 min</span>
-              <span
-                className="post-detail post-tag"
-                onClick={(e) => openTag(e)}
-              >
-                Javascript
-              </span>
-            </div>
-            <span
-              className="post-save-icon text-dark"
-              onClick={(e) => savePost(e)}
-            >
-              <i className="far fa-bookmark"></i>
-            </span>
-          </div>
-        </Link>
       </div>
     </>
   );

@@ -65,3 +65,14 @@ body {
 .bg-light {
   background: #fcfcfc;
 }
+
+.profile-icon-container {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+.home-icon-container {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
