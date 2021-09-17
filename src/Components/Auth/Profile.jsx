@@ -7,6 +7,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { Redirect } from "react-router-dom";
 import { Grid } from "@material-ui/core";
+import Logout from "./Logout";
 export default function Profile() {
   const token = Cookies.get("ud");
   if (token === undefined) {
@@ -56,6 +57,7 @@ export default function Profile() {
       <div className="profile-icon-container">
         <ProfileIcon />
       </div>
+      <Logout />
       <div className="home-icon-container">
         <HomeIcon />
       </div>

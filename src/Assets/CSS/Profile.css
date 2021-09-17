@@ -72,3 +72,19 @@
   border-radius: 0px 20px 20px 0px;
   padding: 4px 12px;
 }
+.logout-container {
+  position: absolute;
+  top: 30px;
+  right: 90px;
+}
+.logout-container button {
+  border: none;
+  transition: 0.12s;
+  outline: none;
+  padding: 5px 20px;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+}
