@@ -57,7 +57,6 @@ export default function ViewPost() {
           } else {
             setPostSavedStatus(false);
           }
-
           if (res.data.post.liked.length > 0) {
             setPostLikedStatus(true);
           } else {
@@ -144,9 +143,6 @@ export default function ViewPost() {
   }, [comment]);
   return (
     <>
-      <div className="profile-icon-container">
-        <ProfileIcon />
-      </div>
       <div className="home-icon-container">
         <HomeIcon />
       </div>

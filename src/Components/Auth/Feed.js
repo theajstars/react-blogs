@@ -7,7 +7,11 @@ import ProfileIcon from "./ProfileIcon";
 
 export default function Feed() {
   const [userToken, setUserToken] = useState(Cookies.get("ud"));
+
   const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchResultsShown, setSearchResultsShown] = useState(false);
+
   const [feedPosts, setFeedPosts] = useState([]);
   const [postBody, setPostBody] = useState(
     "When the lions come and they turn to fight, will you lose your soul? Will you lose your pride?"
@@ -26,7 +30,6 @@ export default function Feed() {
           },
         })
         .then((res) => {
-          console.log(res);
           if (!res.data.auth && res.data.auth !== undefined) {
             Cookies.remove("ud")((window.location.href = "/auth"));
           } else {
@@ -36,9 +39,33 @@ export default function Feed() {
     }
   }, []);
 
-  function searchPosts(e) {
-    setSearchValue(e.target.value);
+  function searchPosts() {
+    if (searchValue.length > 0) {
+      setSearchResultsShown(true);
+      axios
+        .post(
+          "http://localhost:8080/search",
+          { search: searchValue },
+          { headers: { "x-access-token": userToken } }
+        )
+        .then((res) => {
+          console.log(res.data);
+          var results = res.data.results;
+          if (results.length > 0) {
+            setSearchResults(results);
+          } else {
+            setSearchResults([]);
+            setSearchResults([{ title: "No Results Found!" }]);
+          }
+        });
+    } else {
+      setSearchResults([]);
+      setSearchResultsShown(false);
+    }
   }
+  useEffect(() => {
+    searchPosts();
+  }, [searchValue]);
   function openTag(e) {
     e.preventDefault();
   }
@@ -82,28 +109,43 @@ export default function Feed() {
         <Link to="/post/create" className="button-dark text-light new-post-btn">
           New Post&nbsp; <i className="fas fa-plus-circle"></i>
         </Link>
-
+        <div className="profile-icon-container">
+          <ProfileIcon />
+        </div>
         <span></span>
         <div className="search-container bg-light text-dark">
           <input
             type="text"
             className="search-posts-input"
             value={searchValue}
-            onChange={(e) => searchPosts(e)}
+            onChange={(e) => setSearchValue(e.target.value)}
             spellCheck="false"
             autoComplete="off"
             placeholder="Search posts"
           />
-          <span className="search-icon">
+          <span className="search-icon" onClick={() => searchPosts()}>
             <i className="far fa-search"></i>
           </span>
+          <div
+            className={`search-results ${
+              searchResultsShown ? "show-search-results" : "hide-search-results"
+            }`}
+          >
+            {searchResults.map((res) => {
+              return (
+                <Link to="/feed" className="search-result">
+                  <span className="search-result-title">{res.title}</span>
+                  <span className="search-result-username">
+                    @{res.username}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
-
-        <ProfileIcon />
       </div>
       <div className="posts-feed">
         {feedPosts.map((post) => {
-          console.log(post);
           return (
             <Link to={`/post/view/${post.id}`} className="post bg-light">
               <span className="post-author">{post.username}</span>
@@ -132,12 +174,6 @@ export default function Feed() {
                     {post.tag}
                   </span>
                 </div>
-                <span
-                  className="post-save-icon text-dark"
-                  onClick={(e) => savePost(e)}
-                >
-                  <i className="far fa-bookmark"></i>
-                </span>
               </div>
             </Link>
           );

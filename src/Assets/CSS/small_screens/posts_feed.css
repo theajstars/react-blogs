@@ -10,7 +10,8 @@
   a.post {
     width: 90vw;
   }
-  div.search-container {
+  div.search-container,
+  div.search-results {
     width: 350px;
     margin-left: -175px;
   }
