@@ -48,7 +48,7 @@ export default function CreatePost() {
         tag: tag,
       };
       axios
-        .post("http://localhost:8080/create_post", post, {
+        .post("https://drbravo-bloggerman.herokuapp.com/create_post", post, {
           headers: {
             "x-access-token": token,
           },

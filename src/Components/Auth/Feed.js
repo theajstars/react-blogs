@@ -18,7 +18,7 @@ export default function Feed() {
   function fetchPosts() {
     setFiltered(false);
     axios
-      .get("http://localhost:8080/feed/posts", {
+      .get("https://drbravo-bloggerman.herokuapp.com/feed/posts", {
         headers: {
           "x-access-token": userToken,
         },
@@ -45,7 +45,7 @@ export default function Feed() {
       setSearchResultsShown(true);
       axios
         .post(
-          "http://localhost:8080/search",
+          "https://drbravo-bloggerman.herokuapp.com/search",
           { search: searchValue },
           { headers: { "x-access-token": userToken } }
         )
@@ -71,7 +71,7 @@ export default function Feed() {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:8080/tag",
+        "https://drbravo-bloggerman.herokuapp.com/tag",
         { tag },
         { headers: { "x-access-token": userToken } }
       )

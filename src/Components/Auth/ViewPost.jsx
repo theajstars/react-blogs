@@ -36,7 +36,7 @@ export default function ViewPost() {
     } else {
       setPostPath(postID);
       axios
-        .get(`http://localhost:8080/post/view/${postID}`, {
+        .get(`https://drbravo-bloggerman.herokuapp.com/post/view/${postID}`, {
           headers: { "x-access-token": token },
         })
         .then((res) => {
@@ -44,7 +44,7 @@ export default function ViewPost() {
           setComments(res.data.comments);
         });
       axios
-        .get(`http://localhost:8080/post_user/${postID}`, {
+        .get(`https://drbravo-bloggerman.herokuapp.com/post_user/${postID}`, {
           headers: { "x-access-token": token },
         })
         .then((res) => {
@@ -66,17 +66,23 @@ export default function ViewPost() {
     setPostLikedStatus(!isPostLiked);
 
     axios
-      .get(`http://localhost:8080/post/toggle_like/${postPath}`, {
-        headers: { "x-access-token": token },
-      })
+      .get(
+        `https://drbravo-bloggerman.herokuapp.com/post/toggle_like/${postPath}`,
+        {
+          headers: { "x-access-token": token },
+        }
+      )
       .then((res) => {});
   }
   function toggleSavePost() {
     setPostSavedStatus(!isPostSaved);
     axios
-      .get(`http://localhost:8080/post/toggle_save/${postPath}`, {
-        headers: { "x-access-token": token },
-      })
+      .get(
+        `https://drbravo-bloggerman.herokuapp.com/post/toggle_save/${postPath}`,
+        {
+          headers: { "x-access-token": token },
+        }
+      )
       .then((res) => {});
   }
 
@@ -88,7 +94,7 @@ export default function ViewPost() {
     }
     axios
       .post(
-        `http://localhost:8080/comment/${postPath}`,
+        `https://drbravo-bloggerman.herokuapp.com/comment/${postPath}`,
         { comment: comment },
         { headers: { "x-access-token": token } }
       )

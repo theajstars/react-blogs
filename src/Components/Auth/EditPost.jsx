@@ -38,7 +38,7 @@ export default function EditPost() {
     } else {
       setPostPath(postID);
       axios
-        .get(`http://localhost:8080/post/view/${postID}`, {
+        .get(`https://drbravo-bloggerman.herokuapp.com/post/view/${postID}`, {
           headers: { "x-access-token": token },
         })
         .then((res) => {
@@ -77,7 +77,7 @@ export default function EditPost() {
         postID: postPath,
       };
       axios
-        .post("http://localhost:8080/post/update", post, {
+        .post("https://drbravo-bloggerman.herokuapp.com/post/update", post, {
           headers: {
             "x-access-token": token,
           },

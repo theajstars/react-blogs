@@ -43,7 +43,7 @@ function Auth() {
       }, 3000);
     } else {
       axios
-        .post("http://localhost:8080/login", {
+        .post("https://drbravo-bloggerman.herokuapp.com/login", {
           username: username,
           password: password,
         })
@@ -58,7 +58,7 @@ function Auth() {
             if (res.data.auth) {
               Cookies.set("ud", res.data.token, { expires: 4 });
               setLoginStatus(true);
-              axios.get("http://localhost:8080/isUserAuth", {
+              axios.get("https://drbravo-bloggerman.herokuapp.com/isUserAuth", {
                 headers: {
                   "x-access-token": res.data.token,
                 },
@@ -95,22 +95,24 @@ function Auth() {
         username: username,
         email: email,
       };
-      axios.post("http://localhost:8080/register", userObject).then((res) => {
-        if (res.data.userFound) {
-          // User already exists
-          setErrorDisplay(true);
-          setErrorMessage("Username or Email is taken!");
-          setTimeout(() => {
-            setErrorDisplay(false);
-          }, 3000);
-        }
-        if (res.data.auth) {
-          setLoginStatus(true);
-          Cookies.set("ud", res.data.token, { expires: 4 });
-        } else {
-          setLoginStatus(false);
-        }
-      });
+      axios
+        .post("https://drbravo-bloggerman.herokuapp.com/register", userObject)
+        .then((res) => {
+          if (res.data.userFound) {
+            // User already exists
+            setErrorDisplay(true);
+            setErrorMessage("Username or Email is taken!");
+            setTimeout(() => {
+              setErrorDisplay(false);
+            }, 3000);
+          }
+          if (res.data.auth) {
+            setLoginStatus(true);
+            Cookies.set("ud", res.data.token, { expires: 4 });
+          } else {
+            setLoginStatus(false);
+          }
+        });
     }
   }
 
