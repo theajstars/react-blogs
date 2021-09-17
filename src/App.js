@@ -9,7 +9,6 @@ export default function App() {
   const [token, setToken] = useState(Cookies.get("ud"));
   if (token) {
   } else {
-    // setToken(false)
   }
   return <></>;
 }

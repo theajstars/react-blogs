@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ProfileIcon from "./ProfileIcon";
+import HomeIcon from "./HomeIcon";
 
 export default function Feed() {
   const [userToken, setUserToken] = useState(Cookies.get("ud"));
@@ -13,29 +14,29 @@ export default function Feed() {
   const [searchResultsShown, setSearchResultsShown] = useState(false);
 
   const [feedPosts, setFeedPosts] = useState([]);
-  const [postBody, setPostBody] = useState(
-    "When the lions come and they turn to fight, will you lose your soul? Will you lose your pride?"
-  );
-
+  const [isFiltered, setFiltered] = useState(false);
+  function fetchPosts() {
+    setFiltered(false);
+    axios
+      .get("http://localhost:8080/feed/posts", {
+        headers: {
+          "x-access-token": userToken,
+        },
+      })
+      .then((res) => {
+        if (!res.data.auth && res.data.auth !== undefined) {
+          Cookies.remove("ud")((window.location.href = "/auth"));
+        } else {
+          setFeedPosts(res.data.posts);
+        }
+      });
+  }
   useEffect(() => {
-    console.clear();
     if (userToken === undefined) {
       window.location.href = "/auth";
     } else {
       //Find posts
-      axios
-        .get("http://localhost:8080/feed/posts", {
-          headers: {
-            "x-access-token": userToken,
-          },
-        })
-        .then((res) => {
-          if (!res.data.auth && res.data.auth !== undefined) {
-            Cookies.remove("ud")((window.location.href = "/auth"));
-          } else {
-            setFeedPosts(res.data.posts);
-          }
-        });
+      fetchPosts();
     }
   }, []);
 
@@ -49,7 +50,6 @@ export default function Feed() {
           { headers: { "x-access-token": userToken } }
         )
         .then((res) => {
-          console.log(res.data);
           var results = res.data.results;
           if (results.length > 0) {
             setSearchResults(results);
@@ -66,8 +66,18 @@ export default function Feed() {
   useEffect(() => {
     searchPosts();
   }, [searchValue]);
-  function openTag(e) {
+  function openTag(e, tag) {
+    setFiltered(true);
     e.preventDefault();
+    axios
+      .post(
+        "http://localhost:8080/tag",
+        { tag },
+        { headers: { "x-access-token": userToken } }
+      )
+      .then((res) => {
+        setFeedPosts(res.data.posts);
+      });
   }
   function savePost(e) {
     e.preventDefault();
@@ -112,6 +122,17 @@ export default function Feed() {
         <div className="profile-icon-container">
           <ProfileIcon />
         </div>
+        <div
+          className="reset-feed-container"
+          style={{ display: `${isFiltered ? "flex" : "none"}` }}
+        >
+          <span
+            className="button-dark text-light new-post-btn"
+            onClick={() => fetchPosts()}
+          >
+            Reset&nbsp;<i className="far fa-times"></i>
+          </span>
+        </div>
         <span></span>
         <div className="search-container bg-light text-dark">
           <input
@@ -133,11 +154,12 @@ export default function Feed() {
           >
             {searchResults.map((res) => {
               return (
-                <Link to="/feed" className="search-result">
+                <Link to={`/post/view/${res.id}`} className="search-result">
                   <span className="search-result-title">{res.title}</span>
                   <span className="search-result-username">
                     @{res.username}
                   </span>
+                  <span className="search-result-tag">{res.tag}</span>
                 </Link>
               );
             })}
@@ -169,7 +191,7 @@ export default function Feed() {
                     style={{
                       display: `${post.tag.length === 0 ? "none" : "flex"}`,
                     }}
-                    onClick={(e) => openTag(e)}
+                    onClick={(e) => openTag(e, post.tag)}
                   >
                     {post.tag}
                   </span>

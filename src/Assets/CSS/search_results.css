@@ -36,9 +36,7 @@
   color: rgba(255, 255, 255, 0.6);
   font-style: italic;
 }
-.search-result-title,
-.search-result-username {
-}
+
 .search-result-username::after,
 .search-result-title::after {
   margin-left: 10px;
@@ -48,4 +46,11 @@
   font-size: 10px;
   color: #9213a7;
   content: "\f111";
+}
+.search-result-tag {
+  background: rgba(56, 1, 65, 0.9);
+  border-radius: 15px;
+  color: #fcfcfc;
+  padding: 3px 15px;
+  font-size: 14px;
 }

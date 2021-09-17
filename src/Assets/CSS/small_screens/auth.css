@@ -1,105 +1,105 @@
-.small-forms{
-    display: none;
+.small-forms {
+  display: none;
 }
-.show-small-form{
-    display: block;
+.show-small-form {
+  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.hide-small-form {
+  display: none;
+}
+@media screen and (max-width: 1200px) {
+  div.small-forms {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-}
-.hide-small-form{
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+  div.auth-image {
     display: none;
-}
-@media screen and (max-width: 1200px) {
-    div.small-forms{
-        /* display: none; */
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        width: 100vw;
-        box-sizing: border-box;
-    }
-    div.auth-image{
-        display: none;
-    }
-    div.auth-container{
-        display: none;
-    }
-    div.small-forms .register-container{
-        width: 550px;
-    }
+  }
+  div.auth-container {
+    display: none;
+  }
+  div.small-forms .register-container {
+    width: 550px;
+  }
 }
 
 @media screen and (max-width: 1080px) {
-    div.register-form-input-container{
-        width: 500px;
-    }
-    div.register-form-row{
-        flex-direction: column;
-        width: 100%;
-    }
-    div.register-form-row .register-form-input-container{
-        width: 100%;
-    }
-    form.register-form{
-        padding: 40px;
-    }
+  div.register-form-input-container {
+    width: 500px;
+  }
+  div.register-form-row {
+    flex-direction: column;
+    width: 100%;
+  }
+  div.register-form-row .register-form-input-container {
+    width: 100%;
+  }
+  form.register-form {
+    padding: 40px;
+  }
 }
 @media screen and (max-width: 850px) {
-    div.small-forms .login-container{
-        width: 650px;
-    }
+  div.small-forms .login-container {
+    width: 650px;
+  }
 }
 @media screen and (max-width: 680px) {
-    div.register-form-input-container, button.register-btn{
-        width: 100%;
-    }
+  div.register-form-input-container,
+  button.register-btn {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    div.register-form-input-container{
-        width: 100%;
-    }
-    form.register-form{
-        width: 550px;
-    }
-    div.small-forms .register-container{
-        width: 500px;
-    }
+  div.register-form-input-container {
+    width: 100%;
+  }
+  form.register-form {
+    width: 550px;
+  }
+  div.small-forms .register-container {
+    width: 500px;
+  }
 }
 @media screen and (max-width: 520px) {
-    div.register-form-input-container{
-        width: 100%;
-    }
-    form.register-form{
-        width: 300px;
-        padding: 20px;
-    }
-    div.small-forms .register-container{
-        width: 500px;
-    }
+  div.register-form-input-container {
+    width: 100%;
+  }
+  form.register-form {
+    width: 300px;
+    padding: 20px;
+  }
+  div.small-forms .register-container {
+    width: 500px;
+  }
 }
 @media screen and (max-width: 500px) {
-    div.small-forms .login-container{
-        width: 450px;
-    }
+  div.small-forms .login-container {
+    width: 450px;
+  }
 }
 @media screen and (max-width: 470px) {
-    div.small-forms .login-container{
-        width: 400px;
-    }
-    div.small-forms .login-container .login-form{
-        width: 400px;
-        padding: 0px 20px;
-    }
-    div.login-form-input-container, button.login-btn{
-        width: 300px;
-    }
-    div.small-forms .login-container .login-form{
-        width: 300px;
-        /* padding: 0px 20px; */
-    }
+  div.small-forms .login-container {
+    width: 400px;
+  }
+  div.small-forms .login-container .login-form {
+    width: 400px;
+    padding: 0px 20px;
+  }
+  div.login-form-input-container,
+  button.login-btn {
+    width: 300px;
+  }
+  div.small-forms .login-container .login-form {
+    width: 300px;
+  }
 }

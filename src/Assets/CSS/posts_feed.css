@@ -89,3 +89,8 @@
 .post-save-icon:hover {
   background: #cccccc54;
 }
+.reset-feed-container {
+  position: absolute;
+  top: 90px;
+  left: 30px;
+}

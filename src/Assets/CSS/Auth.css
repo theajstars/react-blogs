@@ -59,7 +59,7 @@
   height: 45px;
   outline: none;
   border: none;
-  /* width: 85%; */
+
   width: -webkit-fill-available;
   border-radius: 7px;
   transition: 0.2s;
@@ -70,7 +70,6 @@
 
 .auth-link {
   color: #fcfcfc;
-  /* text-decoration: underline; */
   cursor: pointer;
   font-size: 16px;
   border-bottom: 1px solid #fcfcfc;

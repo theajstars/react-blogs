@@ -8,6 +8,7 @@ import CreatePost from "./Components/Auth/CreatePost.jsx";
 import ViewPost from "./Components/Auth/ViewPost.jsx";
 import Profile from "./Components/Auth/Profile.jsx";
 import EditPost from "./Components/Auth/EditPost.jsx";
+import Tags from "./Components/Auth/Tags.jsx";
 ReactDOM.render(
   <Router>
     <App />
@@ -18,6 +19,7 @@ ReactDOM.render(
     <Route exact path="/post/create" component={CreatePost} />
     <Route path="/post/edit/" component={EditPost} />
     <Route path="/post/view/" component={ViewPost} />
+    <Route path="/tag/" component={Tags} />
   </Router>,
   document.getElementById("root")
 );

@@ -54,8 +54,6 @@ export default function CreatePost() {
           },
         })
         .then((res) => {
-          console.clear();
-          console.log(res);
           var published = res.data.published;
           if (published) {
             setPostResponseDisplay(true);

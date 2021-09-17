@@ -29,7 +29,6 @@ function Auth() {
   }, []);
   //   Login status state change
   useEffect(() => {
-    console.log("Login status: ", loginStatus);
     if (loginStatus) {
       window.location.href = "/feed";
     }
@@ -49,7 +48,6 @@ function Auth() {
           password: password,
         })
         .then((res) => {
-          console.log(res);
           if (res.data.userFound === false) {
             //   User does not exist
             setErrorDisplay(true);
@@ -60,15 +58,11 @@ function Auth() {
             if (res.data.auth) {
               Cookies.set("ud", res.data.token, { expires: 4 });
               setLoginStatus(true);
-              axios
-                .get("http://localhost:8080/isUserAuth", {
-                  headers: {
-                    "x-access-token": res.data.token,
-                  },
-                })
-                .then((res) => {
-                  console.log(res);
-                });
+              axios.get("http://localhost:8080/isUserAuth", {
+                headers: {
+                  "x-access-token": res.data.token,
+                },
+              });
             } else {
               setLoginStatus(false);
               setErrorDisplay(true);
@@ -76,9 +70,6 @@ function Auth() {
               setTimeout(() => setErrorDisplay(false), 2500);
             }
           }
-        })
-        .catch((err) => {
-          console.error(err);
         });
     }
   }
@@ -104,28 +95,22 @@ function Auth() {
         username: username,
         email: email,
       };
-      axios
-        .post("http://localhost:8080/register", userObject)
-        .then((res) => {
-          console.log(res);
-          if (res.data.userFound) {
-            // User already exists
-            setErrorDisplay(true);
-            setErrorMessage("Username or Email is taken!");
-            setTimeout(() => {
-              setErrorDisplay(false);
-            }, 3000);
-          }
-          if (res.data.auth) {
-            setLoginStatus(true);
-            Cookies.set("ud", res.data.token, { expires: 4 });
-          } else {
-            setLoginStatus(false);
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+      axios.post("http://localhost:8080/register", userObject).then((res) => {
+        if (res.data.userFound) {
+          // User already exists
+          setErrorDisplay(true);
+          setErrorMessage("Username or Email is taken!");
+          setTimeout(() => {
+            setErrorDisplay(false);
+          }, 3000);
+        }
+        if (res.data.auth) {
+          setLoginStatus(true);
+          Cookies.set("ud", res.data.token, { expires: 4 });
+        } else {
+          setLoginStatus(false);
+        }
+      });
     }
   }
 

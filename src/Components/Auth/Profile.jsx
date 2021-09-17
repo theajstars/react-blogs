@@ -43,7 +43,6 @@ export default function Profile() {
         headers: { "x-access-token": token },
       })
       .then((res) => {
-        console.log(res);
         setUserPosts(res.data.userPosts);
       });
   }, []);
@@ -56,12 +55,10 @@ export default function Profile() {
         { headers: { "x-access-token": token } }
       )
       .then((res) => {
-        console.log(res);
         setUserPosts(res.data.userPosts);
       });
   };
   function editPost(e) {
-    console.log(e);
     window.location.href = `/edit/${e}`;
   }
   return (
@@ -78,7 +75,12 @@ export default function Profile() {
           {userPosts.map((user_post) => {
             return (
               <Grid item xs={6} sm={4} md={3}>
-                <div className="profile-post">
+                <div
+                  className="profile-post"
+                  onClick={() =>
+                    (window.location.href = `/post/view/${user_post.id}`)
+                  }
+                >
                   <span className="profile-post-header">
                     {user_post.title.length <= 22
                       ? user_post.title

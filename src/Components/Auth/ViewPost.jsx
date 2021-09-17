@@ -31,10 +31,8 @@ export default function ViewPost() {
       path.pathname.lastIndexOf("/") + 1,
       path.pathname.length
     );
-    console.log("Post ID: ", parseInt(postID));
     if (isNaN(postID)) {
       window.location.href = "/feed";
-      console.error("Invalid id: ", postID);
     } else {
       setPostPath(postID);
       axios
@@ -42,7 +40,6 @@ export default function ViewPost() {
           headers: { "x-access-token": token },
         })
         .then((res) => {
-          console.log(res);
           setPost(res.data.post);
           setComments(res.data.comments);
         });
@@ -51,7 +48,6 @@ export default function ViewPost() {
           headers: { "x-access-token": token },
         })
         .then((res) => {
-          console.log(res);
           if (res.data.post.saved.length > 0) {
             setPostSavedStatus(true);
           } else {
@@ -73,9 +69,7 @@ export default function ViewPost() {
       .get(`http://localhost:8080/post/toggle_like/${postPath}`, {
         headers: { "x-access-token": token },
       })
-      .then((res) => {
-        console.log(res);
-      });
+      .then((res) => {});
   }
   function toggleSavePost() {
     setPostSavedStatus(!isPostSaved);
@@ -83,9 +77,7 @@ export default function ViewPost() {
       .get(`http://localhost:8080/post/toggle_save/${postPath}`, {
         headers: { "x-access-token": token },
       })
-      .then((res) => {
-        console.log(res);
-      });
+      .then((res) => {});
   }
 
   function publishComment() {
@@ -101,7 +93,6 @@ export default function ViewPost() {
         { headers: { "x-access-token": token } }
       )
       .then((res) => {
-        console.log(res);
         if (res.data.commented) {
           //Comment has been stored successfully
           const commentOBJ = {

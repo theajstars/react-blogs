@@ -35,16 +35,13 @@ export default function EditPost() {
     );
     if (isNaN(postID)) {
       window.location.href = "/feed";
-      console.error("Invalid id: ", postID);
     } else {
       setPostPath(postID);
-      console.log(postID);
       axios
         .get(`http://localhost:8080/post/view/${postID}`, {
           headers: { "x-access-token": token },
         })
         .then((res) => {
-          console.log(res);
           var fetchedPost = res.data.post;
           setTitle(fetchedPost.title);
           setContent(fetchedPost.body);
@@ -86,8 +83,6 @@ export default function EditPost() {
           },
         })
         .then((res) => {
-          console.clear();
-          console.log(res);
           var published = res.data.updated;
           if (published) {
             setPostResponseDisplay(true);
