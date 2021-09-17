@@ -5,7 +5,7 @@ import ProfileIcon from "./ProfileIcon";
 import "../../Assets/CSS/Profile.css";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import Logout from "./Logout";
 export default function Profile() {
@@ -48,6 +48,18 @@ export default function Profile() {
       });
   }, []);
 
+  const deletePost = (postID, postUserName) => {
+    axios
+      .post(
+        "http://localhost:8080/post/delete/",
+        { id: postID, username: postUserName },
+        { headers: { "x-access-token": token } }
+      )
+      .then((res) => {
+        console.log(res);
+        setUserPosts(res.data.userPosts);
+      });
+  };
   function editPost(e) {
     console.log(e);
     window.location.href = `/edit/${e}`;
@@ -91,14 +103,20 @@ export default function Profile() {
                       : `${user_post.body.substring(0, 20)}...`}
                   </span>
                   <div className="profile-post-actions">
-                    <button
+                    <Link
+                      to={`/post/edit/${user_post.id}`}
                       className="profile-post-action edit-action"
-                      onClick={(e) => editPost(user_post.id)}
+                      // onClick={(e) => editPost(user_post.id)}
                     >
                       <i className="far fa-pencil-alt"></i> Edit
-                    </button>
+                    </Link>
                     &nbsp;
-                    <button className="profile-post-action delete-action">
+                    <button
+                      className="profile-post-action delete-action"
+                      onClick={() =>
+                        deletePost(user_post.id, user_post.username)
+                      }
+                    >
                       <i className="far fa-trash-alt"></i> Delete
                     </button>
                   </div>

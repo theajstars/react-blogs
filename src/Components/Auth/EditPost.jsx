@@ -4,16 +4,20 @@ import React, { useState, useEffect, useRef } from "react";
 import "../../Assets/CSS/CreatePost.css";
 import HomeIcon from "./HomeIcon";
 import ProfileIcon from "./ProfileIcon";
-export default function CreatePost() {
+
+export default function EditPost() {
   const [token, setToken] = useState(Cookies.get("ud"));
   useEffect(() => {
     if (token === undefined) {
       window.location.href = "/auth";
     }
   });
+
+  const [postPath, setPostPath] = useState(0);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [tag, setTag] = useState("");
+  const [username, setUsername] = useState("");
 
   const [titleError, setTitleError] = useState(false);
   const [contentError, setContentError] = useState(false);
@@ -23,6 +27,32 @@ export default function CreatePost() {
   const postResponseIconRef = useRef();
   const [postResponseText, setPostResponseText] = useState("");
 
+  useEffect(() => {
+    var path = new URL(window.location.href);
+    var postID = path.pathname.substring(
+      path.pathname.lastIndexOf("/") + 1,
+      path.pathname.length
+    );
+    if (isNaN(postID)) {
+      window.location.href = "/feed";
+      console.error("Invalid id: ", postID);
+    } else {
+      setPostPath(postID);
+      console.log(postID);
+      axios
+        .get(`http://localhost:8080/post/view/${postID}`, {
+          headers: { "x-access-token": token },
+        })
+        .then((res) => {
+          console.log(res);
+          var fetchedPost = res.data.post;
+          setTitle(fetchedPost.title);
+          setContent(fetchedPost.body);
+          setTag(fetchedPost.tag);
+          setUsername(fetchedPost.username);
+        });
+    }
+  }, []);
   useEffect(() => {
     postError
       ? (postResponseIconRef.current.innerHTML =
@@ -46,9 +76,11 @@ export default function CreatePost() {
         title: title,
         content: content,
         tag: tag,
+        username: username,
+        postID: postPath,
       };
       axios
-        .post("http://localhost:8080/create_post", post, {
+        .post("http://localhost:8080/post/update", post, {
           headers: {
             "x-access-token": token,
           },
@@ -56,11 +88,11 @@ export default function CreatePost() {
         .then((res) => {
           console.clear();
           console.log(res);
-          var published = res.data.published;
+          var published = res.data.updated;
           if (published) {
             setPostResponseDisplay(true);
             setPostError(false);
-            setPostResponseText("Your post has been published successfully");
+            setPostResponseText("Your post has been updated successfully");
             setTimeout(() => setPostResponseDisplay(false), 1000);
             // Fetch newly created post and display it
 
@@ -71,7 +103,7 @@ export default function CreatePost() {
           } else {
             setPostResponseDisplay(true);
             setPostError(true);
-            setPostResponseText("Your post could not be published");
+            setPostResponseText("Your post could not be updated!");
             setTimeout(() => setPostResponseDisplay(false), 3000);
           }
         });

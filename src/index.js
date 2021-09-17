@@ -7,6 +7,7 @@ import Feed from "./Components/Auth/Feed.js";
 import CreatePost from "./Components/Auth/CreatePost.jsx";
 import ViewPost from "./Components/Auth/ViewPost.jsx";
 import Profile from "./Components/Auth/Profile.jsx";
+import EditPost from "./Components/Auth/EditPost.jsx";
 ReactDOM.render(
   <Router>
     <App />
@@ -15,6 +16,7 @@ ReactDOM.render(
     <Route exact path="/feed" component={Feed} />
     <Route exact path="/profile" component={Profile} />
     <Route exact path="/post/create" component={CreatePost} />
+    <Route path="/post/edit/" component={EditPost} />
     <Route path="/post/view/" component={ViewPost} />
   </Router>,
   document.getElementById("root")

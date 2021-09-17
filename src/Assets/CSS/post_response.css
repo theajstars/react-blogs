@@ -34,12 +34,12 @@
 }
 .show-response {
   animation-name: showResponse;
-  animation-duration: 0.7s;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 .hide-response {
   animation-name: hideResponse;
-  animation-duration: 0.7s;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 .post-response-icon {

@@ -183,7 +183,10 @@ export default function ViewPost() {
         <div className="post-comments">
           {comments.map((comment) => {
             return (
-              <div className="post-comment">
+              <div
+                key={`Some_comment_${comments.indexOf(comment)}`}
+                className="post-comment"
+              >
                 <span className="commentator">{comment.username}</span>
                 <p className="commentary">{comment.comment}</p>
                 <span className="comment-date">

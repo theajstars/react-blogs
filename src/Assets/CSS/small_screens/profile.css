@@ -6,7 +6,8 @@
     width: 170px;
     height: 170px;
   }
-  button.profile-post-action {
+  button.profile-post-action,
+  a.profile-post-action {
     padding: 4px 10px;
     font-size: 15px;
   }
