@@ -36,17 +36,23 @@ export default function ViewPost() {
     } else {
       setPostPath(postID);
       axios
-        .get(`https://drbravo-bloggerman.herokuapp.com/post/view/${postID}`, {
-          headers: { "x-access-token": token },
-        })
+        .get(
+          `https://react-blog-api-rvqux.ondigitalocean.app/post/view/${postID}`,
+          {
+            headers: { "x-access-token": token },
+          }
+        )
         .then((res) => {
           setPost(res.data.post);
           setComments(res.data.comments);
         });
       axios
-        .get(`https://drbravo-bloggerman.herokuapp.com/post_user/${postID}`, {
-          headers: { "x-access-token": token },
-        })
+        .get(
+          `https://react-blog-api-rvqux.ondigitalocean.app/post_user/${postID}`,
+          {
+            headers: { "x-access-token": token },
+          }
+        )
         .then((res) => {
           if (res.data.post.saved.length > 0) {
             setPostSavedStatus(true);
@@ -67,7 +73,7 @@ export default function ViewPost() {
 
     axios
       .get(
-        `https://drbravo-bloggerman.herokuapp.com/post/toggle_like/${postPath}`,
+        `https://react-blog-api-rvqux.ondigitalocean.app/post/toggle_like/${postPath}`,
         {
           headers: { "x-access-token": token },
         }
@@ -78,7 +84,7 @@ export default function ViewPost() {
     setPostSavedStatus(!isPostSaved);
     axios
       .get(
-        `https://drbravo-bloggerman.herokuapp.com/post/toggle_save/${postPath}`,
+        `https://react-blog-api-rvqux.ondigitalocean.app/post/toggle_save/${postPath}`,
         {
           headers: { "x-access-token": token },
         }
@@ -94,7 +100,7 @@ export default function ViewPost() {
     }
     axios
       .post(
-        `https://drbravo-bloggerman.herokuapp.com/comment/${postPath}`,
+        `https://react-blog-api-rvqux.ondigitalocean.app/comment/${postPath}`,
         { comment: comment },
         { headers: { "x-access-token": token } }
       )

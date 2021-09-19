@@ -38,9 +38,12 @@ export default function EditPost() {
     } else {
       setPostPath(postID);
       axios
-        .get(`https://drbravo-bloggerman.herokuapp.com/post/view/${postID}`, {
-          headers: { "x-access-token": token },
-        })
+        .get(
+          `https://react-blog-api-rvqux.ondigitalocean.app/post/view/${postID}`,
+          {
+            headers: { "x-access-token": token },
+          }
+        )
         .then((res) => {
           var fetchedPost = res.data.post;
           setTitle(fetchedPost.title);
@@ -77,11 +80,15 @@ export default function EditPost() {
         postID: postPath,
       };
       axios
-        .post("https://drbravo-bloggerman.herokuapp.com/post/update", post, {
-          headers: {
-            "x-access-token": token,
-          },
-        })
+        .post(
+          "https://react-blog-api-rvqux.ondigitalocean.app/post/update",
+          post,
+          {
+            headers: {
+              "x-access-token": token,
+            },
+          }
+        )
         .then((res) => {
           var published = res.data.updated;
           if (published) {

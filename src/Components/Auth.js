@@ -43,7 +43,7 @@ function Auth() {
       }, 3000);
     } else {
       axios
-        .post("https://drbravo-bloggerman.herokuapp.com/login", {
+        .post("https://react-blog-api-rvqux.ondigitalocean.app/login", {
           username: username,
           password: password,
         })
@@ -58,11 +58,14 @@ function Auth() {
             if (res.data.auth) {
               Cookies.set("ud", res.data.token, { expires: 4 });
               setLoginStatus(true);
-              axios.get("https://drbravo-bloggerman.herokuapp.com/isUserAuth", {
-                headers: {
-                  "x-access-token": res.data.token,
-                },
-              });
+              axios.get(
+                "https://react-blog-api-rvqux.ondigitalocean.app/isUserAuth",
+                {
+                  headers: {
+                    "x-access-token": res.data.token,
+                  },
+                }
+              );
             } else {
               setLoginStatus(false);
               setErrorDisplay(true);
@@ -96,7 +99,10 @@ function Auth() {
         email: email,
       };
       axios
-        .post("https://drbravo-bloggerman.herokuapp.com/register", userObject)
+        .post(
+          "https://react-blog-api-rvqux.ondigitalocean.app/register",
+          userObject
+        )
         .then((res) => {
           if (res.data.userFound) {
             // User already exists

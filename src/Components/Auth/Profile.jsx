@@ -39,7 +39,7 @@ export default function Profile() {
 
   useEffect(() => {
     axios
-      .get("https://drbravo-bloggerman.herokuapp.com/user/profile", {
+      .get("https://react-blog-api-rvqux.ondigitalocean.app/user/profile", {
         headers: { "x-access-token": token },
       })
       .then((res) => {
@@ -50,7 +50,7 @@ export default function Profile() {
   const deletePost = (postID, postUserName) => {
     axios
       .post(
-        "https://drbravo-bloggerman.herokuapp.com/post/delete/",
+        "https://react-blog-api-rvqux.ondigitalocean.app/post/delete/",
         { id: postID, username: postUserName },
         { headers: { "x-access-token": token } }
       )

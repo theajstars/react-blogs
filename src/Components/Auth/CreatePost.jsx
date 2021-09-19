@@ -48,11 +48,15 @@ export default function CreatePost() {
         tag: tag,
       };
       axios
-        .post("https://drbravo-bloggerman.herokuapp.com/create_post", post, {
-          headers: {
-            "x-access-token": token,
-          },
-        })
+        .post(
+          "https://react-blog-api-rvqux.ondigitalocean.app/create_post",
+          post,
+          {
+            headers: {
+              "x-access-token": token,
+            },
+          }
+        )
         .then((res) => {
           var published = res.data.published;
           if (published) {
