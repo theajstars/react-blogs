@@ -42,6 +42,8 @@ function Auth() {
         setErrorDisplay(false);
       }, 3000);
     } else {
+      const url = "https://react-blog-api-rvqux.ondigitalocean.app/";
+
       axios
         .post("https://react-blog-api-rvqux.ondigitalocean.app/login", {
           username: username,
